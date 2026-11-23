@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Sortu Eskaintza</title>
+</h:head>
+<h:body>
+    <h2>Sortu Eskaintza</h2>
+
+    <h:form enctype="multipart/form-data">
+        <h:messages globalOnly="false" />
+
+        <h:panelGrid columns="2" cellpadding="6">
+            <h:outputLabel value="Izenburua:" for="title" />
+            <h:inputText id="title" value="#{sortuEskaintzaBean.title}" required="true"
+                         requiredMessage="Izenburua derrigorrezkoa da." />
+
+            <h:outputLabel value="Deskribapena:" for="description" />
+            <h:inputTextarea id="description" value="#{sortuEskaintzaBean.description}" rows="3" cols="30"
+                             required="true" requiredMessage="Deskribapena derrigorrezkoa da." />
+
+            <h:outputLabel value="Egoera:" for="status" />
+            <h:selectOneMenu id="status" value="#{sortuEskaintzaBean.selectedStatus}">
+                <f:selectItems value="#{sortuEskaintzaBean.statusList}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Prezioa (€):" for="price" />
+            <h:inputText id="price" value="#{sortuEskaintzaBean.price}" required="true"
+                         requiredMessage="Prezioa derrigorrezkoa da." />
+
+            <h:outputLabel value="Argitalpen-data (uuuu-hh-ee):" for="pubDate" />
+            <h:inputText id="pubDate" value="#{sortuEskaintzaBean.publicationDate}">
+                <f:convertDateTime pattern="yyyy-MM-dd" type="localDate" />
+            </h:inputText>
+
+            <h:outputLabel value="Irudia:" for="image" />
+            <h:inputFile id="image" value="#{sortuEskaintzaBean.uploadedFile}" />
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Sortu eskaintza" action="#{sortuEskaintzaBean.sortuEskaintza}" />
+        &#160;
+        <h:commandButton value="Hasierara itzuli" action="Hasiera?faces-redirect=true" immediate="true" />
+    </h:form>
+
+    <h:outputText value="#{sortuEskaintzaBean.message}" rendered="#{not empty sortuEskaintzaBean.message}" />
+</h:body>
+</html>

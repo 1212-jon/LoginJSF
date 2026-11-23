@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Kontsultatu Eskaintzak</title>
+</h:head>
+<h:body>
+    <h2>Kontsultatu Eskaintzak</h2>
+
+    <h:form>
+        <h:panelGrid columns="3" cellpadding="5">
+            <h:outputLabel value="Bilatu (izenburua/hitza):" for="filtroa" />
+            <h:inputText id="filtroa" value="#{kontsultatuEskaintzakBean.filtroa}" />
+            <h:commandButton value="Bilatu" action="#{kontsultatuEskaintzakBean.bilatu}" />
+        </h:panelGrid>
+
+        <br />
+
+        <h:dataTable value="#{kontsultatuEskaintzakBean.eskaintzak}" var="esk" border="1" cellpadding="6">
+            <h:column>
+                <f:facet name="header">Izenburua</f:facet>
+                <h:outputText value="#{esk.title}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Deskribapena</f:facet>
+                <h:outputText value="#{esk.description}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Prezioa (€)</f:facet>
+                <h:outputText value="#{esk.price}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Data</f:facet>
+                <h:outputText value="#{esk.pubDate}" />
+            </h:column>
+        </h:dataTable>
+
+        <br />
+        <h:commandButton value="Hasierara itzuli" action="Hasiera?faces-redirect=true" />
+    </h:form>
+</h:body>
+</html>

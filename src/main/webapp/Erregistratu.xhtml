@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+<h:head>
+    <title>Market JSF - Erregistratu</title>
+</h:head>
+<h:body>
+    <h2>Erabiltzaile berria erregistratu</h2>
+    <h:form>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Izena:" for="izena" />
+            <h:inputText id="izena" value="#{erregistratuBean.izena}" required="true"
+                         requiredMessage="Izena derrigorrezkoa da." />
+
+            <h:outputLabel value="Posta elektronikoa:" for="email" />
+            <h:inputText id="email" value="#{erregistratuBean.email}" required="true"
+                         requiredMessage="Posta elektronikoa derrigorrezkoa da." />
+
+            <h:outputLabel value="Pasahitza:" for="pass" />
+            <h:inputSecret id="pass" value="#{erregistratuBean.password}" required="true"
+                           requiredMessage="Pasahitza derrigorrezkoa da." />
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Erregistratu" action="#{erregistratuBean.erregistratu}" />
+        &nbsp;
+        <h:commandButton value="Atzera (Saioa hasi)" action="#{erregistratuBean.atzera}" immediate="true" />
+
+        <br /><br />
+        <h:messages infoStyle="color:green;" errorStyle="color:red;" />
+    </h:form>
+</h:body>
+</html>
